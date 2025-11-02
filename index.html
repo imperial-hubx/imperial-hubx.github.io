@@ -1,0 +1,200 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imperial Hubx</title>
+  <meta name="description" content="Imperial Hubx — uma nova era para a Imperial. Hub moderno com funções poderosas e interface elegante." />
+  <meta property="og:title" content="Imperial Hubx" />
+  <meta property="og:description" content="Imperial Hubx é uma nova era para a Imperial, com a ajuda da Confederação da desgraça que não ajuda em nada, conseguimos criar esse script maravilhoso." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%232256e6'/%3E%3Cpath d='M38 88L64 24l26 64H74l-10 24-10-24H38z' fill='white'/%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg: #0b1220;           /* fundo */
+      --bg-soft: #0f172a;      /* superfícies */
+      --txt: #e5e7eb;          /* texto primário */
+      --muted: #9ca3af;        /* texto secundário */
+      --brand: #2563eb;        /* cor principal */
+      --brand-2: #7c3aed;      /* cor secundária */
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --ring: 0 0 0 8px rgb(37 99 235 / 0%);
+    }
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+      color: var(--txt); background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(124,58,237,.20), transparent 50%),
+        radial-gradient(900px 500px at -10% 20%, rgba(37,99,235,.25), transparent 60%),
+        linear-gradient(180deg, #0b1220, #0b1220 60%, #0a1020 100%);
+    }
+    a { color: inherit; text-decoration: none }/* Layout */
+.container{ max-width: 1120px; margin: 0 auto; padding: 0 1.25rem }
+header{
+  position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(8px);
+  background: linear-gradient(180deg, rgba(11,18,32,.85), rgba(11,18,32,.55)); border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0 }
+.brand{ display:flex; align-items:center; gap:.7rem; font-weight:700; letter-spacing:.2px }
+.brand .logo{ width: 34px; height: 34px; display:grid; place-items:center; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 8px 28px rgba(124,58,237,.35) }
+
+.cta{ display:flex; gap:.6rem }
+.btn{ --shadow: rgba(37,99,235,.45); cursor:pointer; border:1px solid rgba(255,255,255,.08); padding:.6rem 1rem; border-radius:14px; font-weight:600; transition: .2s ease; background: rgba(255,255,255,.03) }
+.btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px var(--shadow) }
+.btn-primary{ background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-color: transparent }
+
+/* Hero */
+.hero{ padding: 72px 0 32px }
+.headline{ font-size: clamp(2rem, 5vw, 3.25rem); line-height:1.05; letter-spacing:-.02em; margin: 0 0 .75rem; font-weight: 900 }
+.sub{ color: var(--muted); font-size: clamp(1rem, 2vw, 1.125rem); max-width: 60ch }
+.hero-cta{ display:flex; gap:.8rem; margin-top: 1.25rem; flex-wrap: wrap }
+
+/* Cards */
+.section{ padding: 40px 0 }
+.section h2{ font-size: clamp(1.25rem, 3.2vw, 1.8rem); margin: 0 0 1rem; letter-spacing:-.01em }
+.grid{ display:grid; gap: 16px; grid-template-columns: repeat(12, 1fr) }
+.col-4{ grid-column: span 12 }
+@media(min-width: 720px){ .col-4{ grid-column: span 6 } }
+@media(min-width: 1024px){ .col-4{ grid-column: span 4 } }
+
+.card{ position:relative; border:1px solid rgba(255,255,255,.08); border-radius:18px; padding: 18px; background: rgba(255,255,255,.035);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 26px rgba(0,0,0,.25) }
+.card h3{ margin:.2rem 0 .35rem; font-size:1.05rem }
+.card p{ margin:0; color: var(--muted); font-size:.96rem }
+
+.pill{ display:inline-flex; align-items:center; gap:.5rem; font-size:.78rem; color:#dbeafe; padding:.35rem .6rem; border-radius:999px; background: linear-gradient(90deg, rgba(59,130,246,.22), rgba(124,58,237,.18)); border:1px solid rgba(59,130,246,.35) }
+
+/* About */
+.about{ border:1px solid rgba(255,255,255,.08); border-radius:18px; padding: 18px; background: rgba(255,255,255,.03) }
+.about p{ margin:.2rem 0 0; color: var(--muted); font-size: 1.02rem }
+
+/* Footer */
+footer{ border-top:1px solid rgba(255,255,255,.06); color: var(--muted) }
+.foot{ display:flex; gap:1rem; padding: 20px 0; align-items:center; justify-content:space-between; flex-wrap:wrap }
+.links{ display:flex; gap:1rem; flex-wrap:wrap }
+
+/* Icons */
+.ico{ width:22px; height:22px; opacity:.9 }
+.badge{ position:absolute; top:12px; right:12px; font-size:.7rem; color:#22c55e }
+
+/* Focus ring */
+.btn:focus-visible, a:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,.45) }
+
+/* Tiny anims */
+@keyframes float { from { transform: translateY(0) } 50% { transform: translateY(-4px) } to { transform: translateY(0) } }
+.float { animation: float 4s ease-in-out infinite }
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav" role="navigation" aria-label="Topo">
+      <a class="brand" href="#" aria-label="Página inicial Imperial Hubx">
+        <span class="logo" aria-hidden="true">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l7 18-7-4-7 4 7-18z" fill="white"/>
+          </svg>
+        </span>
+        <span>Imperial Hubx</span>
+      </a>
+      <nav class="cta" aria-label="Ações">
+        <a class="btn" href="#funcoes">Funções</a>
+        <a class="btn" href="#sobre">Sobre</a>
+        <a class="btn btn-primary" href="#" aria-disabled="true">Baixar Script</a>
+      </nav>
+    </div>
+  </header>  <!-- Hero -->  <section class="hero">
+    <div class="container">
+      <span class="pill">Nova era • Hub avançado</span>
+      <h1 class="headline">Imperial Hubx</h1>
+      <p class="sub">Imperial Hub construído para desempenho, simplicidade e poder. Interface moderna, feedback instantâneo e uma base pronta para crescer com o seu domínio.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#funcoes">Ver funções</a>
+        <a class="btn" href="#sobre">Ler descrição</a>
+      </div>
+    </div>
+  </section>  <!-- Funções -->  <section id="funcoes" class="section">
+    <div class="container">
+      <h2>Funções</h2>
+      <div class="grid">
+        <!-- 1 -->
+        <article class="card col-4">
+          <div class="badge">Estável</div>
+          <div class="float" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>"Kill Couch Muito Bom"</h3>
+          <p>Execução rápida e precisa com foco em eficiência e controle total.</p>
+        </article>
+        <!-- 2 -->
+        <article class="card col-4">
+          <div class="badge" style="color: var(--warn)">Proteção</div>
+          <div class="float" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <h3>"Crash Server Muito Bom"</h3>
+          <p>Camada de testes de resiliência e estresse, ideal para validar robustez.</p>
+        </article>
+        <!-- 3 -->
+        <article class="card col-4">
+          <div class="badge" style="color: var(--ok)">Escala</div>
+          <div class="float" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 20V10l6-6 6 6v10H4z" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M10 14h4v6h-4z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>"Expansão de Domínio"</h3>
+          <p>Ferramentas para crescer sua presença com governança simples e segura.</p>
+        </article>
+        <!-- 4 -->
+        <article class="card col-4">
+          <div class="badge" style="color: var(--brand)">Extra</div>
+          <div class="float" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>"Entre outros"</h3>
+          <p>Pacote em evolução contínua, com novidades frequentes e integrações.</p>
+        </article>
+      </div>
+    </div>
+  </section>  <!-- Sobre -->  <section id="sobre" class="section">
+    <div class="container">
+      <h2>Sobre</h2>
+      <div class="about" role="note" aria-label="Descrição do projeto">
+        <p>
+          "Imperial Hubx é uma nova era para a Imperial, com a ajuda da Confederação da desgraça que não ajuda em nada, conseguimos criar esse script maravilhoso."
+        </p>
+      </div>
+    </div>
+  </section>  <!-- Footer -->  <footer>
+    <div class="container foot">
+      <div style="display:flex; align-items:center; gap:.6rem">
+        <span class="logo" aria-hidden="true" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand-2))"></span>
+        <span>Imperial Hubx</span>
+      </div>
+      <div class="links">
+        <a href="#funcoes" class="btn" style="padding:.4rem .7rem">Funções</a>
+        <a href="#sobre" class="btn" style="padding:.4rem .7rem">Sobre</a>
+        <a href="#" class="btn" aria-disabled="true" style="padding:.4rem .7rem">Contato</a>
+      </div>
+      <small>© <span id="y"></span> Imperial. Todos os direitos reservados.</small>
+    </div>
+  </footer>  <script>
+    // Atualiza ano automaticamente
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script></body>
+</html>
